@@ -1,6 +1,7 @@
 import { Message } from "@/typings"
 import redis from "@/redis"
 import  type { NextApiRequest, NextApiResponse } from 'next'
+import { serverPusher } from "@/pusher"
 
 type Data={
     message : Message
@@ -21,5 +22,6 @@ const newMessage={
     ...message,created_at : Date.now()
 };
 await redis.hset("messages",message.id,JSON.stringify(newMessage));
+serverPusher.trigger("messages","new-message",newMessage)
 res.status(200).json({message : newMessage})
 }
