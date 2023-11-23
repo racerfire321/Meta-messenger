@@ -2,22 +2,21 @@ import { getProviders } from "next-auth/react";
 import Image from "next/image";
 import SignInComponent from "./SignInComponent";
 
-
 async function SignInPage() {
-  const provider = await getProviders();
-  
+  const providers = await getProviders();
+
   return (
-    <div className="flex-row justify-center">
-      <div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="mr-5">
         <Image
-          className="rounded-full mx-2 object-cover"
-          width={700}
+          className="rounded-full object-cover"
+          width={600}
           height={700}
           src="https://links.papareact.com/161"
-          alt="messenger logo"
+          alt="Messenger logo"
         />
       </div>
-      <SignInComponent providers={provider} />
+      <SignInComponent providers={providers} />
     </div>
   );
 }

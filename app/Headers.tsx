@@ -12,7 +12,7 @@ async function Headers  ()  {
          
            
            <div className='flex space-x-2 '>
-           <Image src= {session.user?.image!}
+           <Image src= {session.user?.image! || "https://links.papareact.com/161"}
            className='rounded-full mx-2 object-contain'
            height={10}
            width={50}
